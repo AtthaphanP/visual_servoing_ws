@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    
+    <!-- Start Moveit ABB IRB120 model -->
+    <arg name="sim" default="false" />
+    <arg name="robot_ip" default="192.168.125.1" />
+    <include file="$(find abb_irb120_moveit_config)/launch/moveit_planning_execution.launch">
+        <arg name="sim" value="$(arg sim)" />
+        <arg name="robot_ip" value="$(arg robot_ip)" />
+    </include>
+    
+    <!-- Start Add collision object  -->
+    <include file="$(find visual_servoing)/launch/add_collision_object.launch" />
+
+    <!-- Start Realsense Camera -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="enable_color" value="true" />
+        <arg name="enable_depth" value="false" />
+        <arg name="enable_infra1" value="false" />
+        <arg name="enable_infra2" value="false" />
+        <arg name="color_width" default="640"/>
+        <arg name="color_height" default="360"/>
+        <arg name="color_fps" default="60"/>
+    </include>
+
+    <!-- Start Aruco tracking -->
+    <include file="$(find aruco_ros)/launch/single.launch" />
+
+</launch>
+

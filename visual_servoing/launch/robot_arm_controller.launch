@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="robot_arm_controller" pkg="visual_servoing" type="robot_arm_controller" respawn="false" output="screen">
+  </node>
+
+</launch>

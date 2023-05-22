@@ -1,0 +1,15 @@
+<launch>
+    <!-- Start Realsense Camera -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="enable_color" value="true" />
+        <arg name="enable_depth" value="false" />
+        <arg name="enable_infra1" value="false" />
+        <arg name="enable_infra2" value="false" />
+        <arg name="color_width" default="640"/>
+        <arg name="color_height" default="360"/>
+        <arg name="color_fps" default="60"/>
+
+    </include>
+
+    <include file="$(find aruco_ros)/launch/single.launch" />
+</launch>
